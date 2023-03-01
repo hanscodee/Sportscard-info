@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container text-center mt-5">
+    <div class="row">
+      <div class="col">
+      
+      </div>
+      <div class="col">
+       
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col mt-5">
+            
+            <image class="rounded-circle  m-auto  mt-5 img-thumbnail" src= "https://cdn.nba.com/headshots/nba/latest/1040x760/977.png" width="256" height="256" focusable="false" >
+        
+            <p class='ms-8 fw-bolder'></p>
+   
+      </div>
+      <div class="col">
+   
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="album py-5 ">
+    <div class="container mx-auto">
+        <div class="row  row-cols-md-3 g-3  ">
+     
+        {% for x in page_obj %}
+        <div class="col" >
+            
+            <div class="card shadow p-3 mb-5 bg-body rounded  mx-auto" id="div1" style="width: 18rem;">
+            
+            
+            <img class="cardpic-img" src={{x.picture}} class="card-img-top" alt="...">
+            
+            <a class="btn" href={{x.oldlink}}>   
+            
+            
+        
+            
+            <div class="card-body">
+                {% load custom_tag %} 
+                
+                <p class="fw-bolder">{{x.name}}</p>
+                <h5 class="fw-normal text-success">Price:{{x.price}}</h5>
+                <p class="fst-italic">End time: {{x.enddata}}</p>
+                
+                
+            </div>
+            </a> 
+            </div>
+           
+        </div>
+        
+        {% endfor %} 
+   
+     
+            </div> 
+            <div class="pagination">
+                <span class="step-links mx-auto">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        
+            </div>
+        </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="album py-5 ">
+    <div class="container mx-auto">
+        <div class="col g-3  ">
+     
+        {% for x in page_obj %}
+        <hr class="featurette-divider">
+
+            <div class="card mb-3 featurette">
+            <div class="row g-0">
+            <div class="col-md-7 order-md-2">
+                <a href={{x.oldlink}} target="_blank" >
+                <h1 class="featurette-heading fw-normal lh-1 " href={{x.oldlink}}>{{x.name}}</h1>
+                </a>
+                <h1 class=" mt-5 text-success">Pirce:   {{x.price}}</h1>
+                <p class="fst-italic">End time: {{x.enddata}}</p>
+            </div>
+            <div class="col-md-5 order-md-1 id="div1">
+                <image class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto " width="400" src={{x.picture}} role="img" preserveAspectRatio="xMidYMid slice" focusable="false"></image>
+
+            </div>
+            </div>
+            </div>
+
+        
+        {% endfor %} 
+   
+     
+            </div> 
+            <div class="pagination mt-5">
+                <span class="step-links mx-auto">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        
+            </div>
+        </div>
+</div>
+
+
+
+
+
+{% endblock %}

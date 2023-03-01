@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner ">
+            <div class="carousel-item active ">
+            <image class="bd-placeholder-img " width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src='/static/picture/bannerpic4.jpg'><rect width="100%" height="100%" fill="#777"/>
+            </image>
+            
+            <div class="container">
+                <div class="carousel-caption text-start">
+                <h1>CheckCard Platform</h1>
+                <p>Your best friend of collecting sports trading cards.</p>
+                <p><a class="btn btn-lg btn-primary" href="{% url 'card_board:card' %}">Learn about us</a></p>
+                </div>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <image class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src='/static/picture/bannerpic2.png'><rect width="100%" height="100%" fill="#777"/></image>
+    
+            <div class="container">
+                <div class="carousel-caption">
+                <h1>You can check every card sold at eBay</h1>
+                <p>In this page you can see every card price which was sold at eBay.</p>
+                <p><a class="btn btn-lg btn-primary" href=https://www.onlyalt.com/>Learn more</a></p>
+                </div>
+            </div>
+            </div>
+            <div class="carousel-item">
+                <image class="bd-placeholder-img " width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src='/static/picture/bannerpic3.jpg'><rect width="100%" height="100%" fill="#777"/>
+                </image>
+    
+            <div class="container">
+                <div class="carousel-caption text-end">
+                <h1>Please Wait</h1>
+                <p>The new function is coming soon</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Explore more</a></p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+  
+  
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+  
+    <div class="container marketing">
+  
+      <!-- Three columns of text below the carousel -->
+      <div class="row ">
+        
+       
+        <div class="col-lg-4 mt-5  ">
+            
+            <image class="rounded-circle ms-8 img-thumbnail" src= "https://cdn.nba.com/headshots/nba/latest/1040x760/977.png" width="120" height="120" focusable="false" >
+    
+            <p class='ms-8 fw-bolder'></p>
+
+            <p><a class="ms-8 btn btn-dark fw-bolder" href="{% url 'card_board:kobe' %}">Kobe Bryant </a></p>
+
+          
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-4 mt-5  ">
+            
+            <image class="rounded-circle ms-8 img-thumbnail" src= "https://cdn.nba.com/headshots/nba/latest/1040x760/893.png" width="120" height="120" focusable="false" >
+    
+            <p class='ms-8 fw-bolder'></p>
+
+            <p><a class="ms-8 btn btn-dark fw-bolder" href="{% url 'card_board:jordan' %}">Micheal Jordan </a></p>
+
+          
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-4 mt-5  ">
+            
+            <image class="rounded-circle ms-8 img-thumbnail" src= "https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png" width="120" height="120" focusable="false" >
+    
+            <p class='ms-8 fw-bolder'></p>
+
+            <p><a class="ms-8 btn btn-dark fw-bolder" href="{% url 'card_board:james' %}">LeBron James</a></p>
+
+          
+        </div><!-- /.col-lg-4 -->
+        
+    
+      </div><!-- /.row -->
+  
+  
+      <!-- START THE FEATURETTES -->
+  
+      <hr class="featurette-divider">
+
+
+
+<div class="album py-5 ">
+    <div class="container mx-auto">
+        <div class="row  row-cols-md-3 g-3  ">
+     
+        {% for x in page_obj %}
+        <div class="col" >
+            
+            <div class="card shadow p-3 mb-5 bg-body rounded  mx-auto" id="div1" style="width: 18rem;">
+            
+            
+            <img class="cardpic-img" src={{x.picture}} class="card-img-top" alt="...">
+            
+            <a class="btn" href={{x.oldlink}}>   
+            
+
+            
+            <div class="card-body">
+                {% load custom_tag %} 
+                
+                <p class="fw-bolder user-select-all" >{{x.name}}</p>
+                <h5 class="fw-normal text-success">Price:{{x.price}}</h5>
+                <p class="fst-italic">End time: {{x.enddata}}</p>
+                
+                
+            </div>
+            </a> 
+            </div>
+           
+        </div>
+        
+        {% endfor %} 
+   
+     
+            </div> 
+            <div class="pagination">
+                <span class="step-links mx-auto">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        
+            </div>
+        </div>
+</div>
+
+
+  
+</main>
+{% endblock %}
